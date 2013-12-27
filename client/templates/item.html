@@ -1,0 +1,10 @@
+<template name="item">
+	<li>
+		<div class="user">
+			<img src="http://graph.facebook.com/{{ user.services.facebook.id }}/picture/?type=square" title="{{ user.profile.name }}" class="profilePic">
+		</div><!--
+		--><div class="name">{{ name }}</div><!--
+		--><div class="price">$ {{ price }}</div><!--
+		--><div class="options"><a href="#" class="remove">Remove</a></div>
+	</li>
+</template>

@@ -1,0 +1,10 @@
+<template name="home">
+	<div id="home">
+		<ul class="items">
+			{{#each items}}
+				{{> item}}
+			{{/each}}
+		</ul>
+		<div class="total">Total: {{ total }}</div>
+	</div>
+</template>
