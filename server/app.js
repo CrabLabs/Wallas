@@ -1,4 +1,5 @@
 Items = new Meteor.Collection("items");
+Groups = new Meteor.Collection("groups");
 
 Meteor.publish("items", function () {
 	return Items.find({});
@@ -16,6 +17,10 @@ Meteor.publish("users", function () {
 	});
 });
 
+Meteor.publish("groups", function () {
+	return Groups.find({});
+});
+
 Items.allow({
 	insert: function (userId, doc) {
 		check(doc.name, String);
@@ -28,5 +33,17 @@ Items.allow({
 	},
 	remove: function () {
 		return true;
+	}
+});
+
+Groups.allow({
+	insert: function (userId, doc) {
+		return true;
+	},
+	update: function (userId, doc) {
+		return Meteor.user()._id === userId;
+	},
+	remove: function (userId, doc) {
+		return Meteor.user()._id === userId;
 	}
 });

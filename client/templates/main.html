@@ -15,9 +15,14 @@
 	<header>
 		<img src="{{ userPicture }}" title="{{ Meteor.user.profile.name }}" class="profilePic">
 		<a href="#" id="logout">Logout</a>
+		<a href="/">Index</a>
 	</header>
 	<div id="main" role="main">
-		{{> home }}
+		{{#if currentGroup }}
+			{{> home }}
+		{{ else }}
+			{{> dashboard }}
+		{{/if }}
 	</div>
 	<footer>
 		<button id="add-new">+</button>

@@ -1,9 +1,12 @@
 Deps.autorun(function () {
 	Meteor.subscribe("items");
 	Meteor.subscribe("users");
+	Meteor.subscribe("groups");
+	Meteor.subscribe("currentGroup", Session.get("currentGroup"));
 });
 
 Items = new Meteor.Collection("items");
+Groups = new Meteor.Collection("groups");
 
 function getUserName (userId) {
 	return Meteor.users.findOne({_id: userId}).profile.name;
@@ -14,9 +17,10 @@ function getUserPicture (userId) {
 	console.log(a);
 };
 
-
 Template.home.items = function () {
-	return Items.find({});
+	return Items.find({
+		group: Session.get("currentGroup")
+	});
 };
 
 Template.home.total = function () {
@@ -27,9 +31,39 @@ Template.home.total = function () {
 	return total;
 };
 
+Template.dashboard.groups = function () {
+	return Groups.find({
+		deleted: false
+	});
+};
+
+Template.dashboard.events({
+	"click .groupAdd": function (event) {
+		event.preventDefault();
+		
+		Groups.insert({
+			deleted: false,
+			owner: Meteor.user()._id,
+			name: prompt("Group name...")
+		});
+	},
+	"click .remove": function (event) {
+		event.preventDefault();
+		
+		if (confirm("Are you sure?")) {
+			Groups.update({
+				_id: this._id
+			}, {
+				$set: {deleted: true}
+			});
+		}
+	}
+});
+
 Template.home.events({
 	"click .remove": function (event) {
 		event.preventDefault();
+		
 		if (confirm("Are you sure?")) {
 			Items.remove({
 				_id: this._id
@@ -38,8 +72,16 @@ Template.home.events({
 	}
 });
 
+var getFacebookPicture = function (facebookId) {
+	return "http://graph.facebook.com/" + facebookId + "/picture/?type=square";
+};
+
 Template.layout.userPicture = function () {
-	return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture/?type=square"
+	return  (Meteor.user().services) ? getFacebookPicture(Meteor.user().services.facebook.id) : '';
+};
+
+Template.layout.currentGroup = function () {
+	return Session.get("currentGroup");
 };
 
 Template.layout.events({
@@ -52,6 +94,7 @@ Template.layout.events({
 
 		Items.insert({
 			user: Meteor.user(),
+			group: Session.get("currentGroup"),
 			name: prompt("Item name"),
 			price: parseInt(prompt("Item price"), 10)
 		});

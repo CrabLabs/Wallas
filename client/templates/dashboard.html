@@ -1,0 +1,10 @@
+<template name="dashboard">
+	<div id="dashboard">
+		<ul class="groupList">
+			{{#each groups}}
+				<li>{{> group }}</li>
+			{{/each}}
+		</ul>
+		<a href="#" class="groupAdd">New group...</a>
+	</div>
+</template>
