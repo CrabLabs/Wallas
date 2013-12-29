@@ -8,8 +8,9 @@ preserve-inputs
 less
 jquery
 accounts-base
-accounts-ui
 accounts-facebook
 webapp
 startup
 backbone
+accounts-password
+accounts-ui-unstyled
