@@ -25,7 +25,10 @@ Template.home.items = function () {
 
 Template.home.total = function () {
 	var total = 0;
-	var as =  Items.find({}).map(function(doc) {
+	
+	Items.find({
+		group: Session.get("currentGroup")
+	}).map(function(doc) {
 		total += doc.price;
 	});
 	return total;
