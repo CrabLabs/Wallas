@@ -14,8 +14,8 @@
 <template name="layout">
 	<header>
 		<img src="{{ userPicture }}" title="{{ Meteor.user.profile.name }}" class="profilePic">
-		<a href="#" id="logout">Logout</a>
-		<a href="/">Index</a>
+		<a href="#" id="logout" class="button">Logout</a>
+		<a href="/" id="home" class="button">Index</a>
 	</header>
 	<div id="main" role="main">
 		{{#if currentGroup }}
