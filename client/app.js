@@ -3,7 +3,7 @@ Deps.autorun(function () {
 	Meteor.subscribe("users");
 	Meteor.subscribe("groups");
 	Meteor.subscribe("currentGroup", Session.get("currentGroup"));
-	Meteor.subscribe("currentRegistration", Session.get("currentRegistration"));
+	Meteor.subscribe("registerPage", Session.get("registerPage"));
 });
 
 Items = new Meteor.Collection("items");
@@ -99,12 +99,12 @@ Template.layout.userPicture = function () {
 	return  (Meteor.user().services) ? getFacebookPicture(Meteor.user().services.facebook.id) : '';
 };
 
-Template.layout.currentRegistration = function () {
-	return Session.get("currentRegistration");
-};
-
 Template.layout.currentGroup = function () {
 	return Session.get("currentGroup");
+};
+
+Template.login.registerPage = function () {
+	return Session.get("registerPage");
 };
 
 Template.layout.events({

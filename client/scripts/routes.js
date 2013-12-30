@@ -2,22 +2,22 @@ var Routes = Backbone.Router.extend({
 
 	routes: {
 		"": "dashbord",
-		":id": "group",
-		"register": "register"
+		"register": "register",
+		":id": "group"
 	},
 
 	dashbord: function () {
+		Session.set("registerPage", null);
 		Session.set("currentGroup", null);
-		Session.set("currentRegistration", null);
 	},
 
 	group: function (id) {
-		Session.set("currentRegistration", null);
+		Session.set("registerPage", null);
 		Session.set("currentGroup", id);
 	},
 
 	register: function () {
-		Session.set("currentRegistration", true);
+		Session.set("registerPage", true);
 	}
 
 });
