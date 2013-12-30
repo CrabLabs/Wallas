@@ -19,7 +19,7 @@ function getUserPicture (userId) {
 };
 
 Template.login.events({
-	"submit form": function (event) {
+	"submit #loginForm": function (event) {
 		event.preventDefault();
 
 		Meteor.loginWithPassword($("#loginName").val(), $("#loginPassword").val(), function (Error) {
@@ -34,7 +34,7 @@ Template.login.events({
 });
 
 Template.register.events({
-	"submit form": function (event) {
+	"submit #registerForm": function (event) {
 		event.preventDefault();
 		var username, email, pass, passConfirm;
 
@@ -45,14 +45,16 @@ Template.register.events({
 		
 		if (pass == passConfirm) {
 			Accounts.createUser({
-				username: username,
 				email: email,
-				password: pass
+				password: pass,
+				profile: {
+					name: username
+				}
 			}, function (Error) {
 				if (Error) {
 					console.log(Error);
 				} else {
-					document.reload();
+					Backbone.history.navigate("/");
 				}
 			});
 		} else {
@@ -173,4 +175,8 @@ Template.item.events({
 			$set: {price: parseInt(prompt("Item price"), 10)}
 		});
 	}
+});
+
+Accounts.config({
+	sendVerificationEmail: false
 });

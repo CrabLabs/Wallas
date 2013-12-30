@@ -4,12 +4,14 @@
 	{{ else }}
 		<div id="login">
 			<div class="logo"></div>
-			<fieldset>
-				<input type="text" name="loginEmail" id="loginName" placeholder="Email">
-				<input type="password" name="loginPassword" id="loginPassword" placeholder="Password">
-				<input type="submit" value="Sign in" id="send">
-				<a href="" id="loginFacebook">Sign in with facebook</a>
-			</fieldset>
+			<form id="loginForm" action="">
+				<fieldset>
+					<input type="text" name="loginEmail" id="loginName" placeholder="Email">
+					<input type="password" name="loginPassword" id="loginPassword" placeholder="Password">
+					<input type="submit" value="Sign in" id="send">
+					<a href="" id="loginFacebook">Sign in with facebook</a>
+				</fieldset>
+			</form>
 			<div class="options">
 				<a href="register" id="loginCreateAccount">Create Account</a>
 				<a href="forgot-password" id="loginForgotPassword">Forgot Password</a>

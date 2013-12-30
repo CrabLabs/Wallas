@@ -11,7 +11,7 @@ Meteor.publish("users", function () {
 			"services": 1
 		},
 		transform: function (user) {
-			user.profile.image = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
+			// user.profile.image = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
 			return user;
 		}
 	});
