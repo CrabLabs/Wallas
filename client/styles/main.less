@@ -20,6 +20,25 @@ header{
 		padding: 0 10px;
 		position: relative;
 		top: -20px;
+		&.button{
+			font-size: 0;
+			height: 40px;
+			width: 40px;
+			&#home{
+				background-image: url(/images/home.png);
+				background-image: url(/images/home.svg), url(/images/home.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			&#logout{
+				background-image: url(/images/logout.png);
+				background-image: url(/images/logout.svg), url(/images/logout.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		}
 	}
 }
 #main{
