@@ -3,6 +3,7 @@ Deps.autorun(function () {
 	Meteor.subscribe("users");
 	Meteor.subscribe("groups");
 	Meteor.subscribe("currentGroup", Session.get("currentGroup"));
+	Meteor.subscribe("currentRegistration", Session.get("currentRegistration"));
 });
 
 Items = new Meteor.Collection("items");
@@ -16,6 +17,21 @@ function getUserPicture (userId) {
 	var a = Meteor.call("getProfile", userId);
 	console.log(a);
 };
+
+Template.login.events({
+	"submit form": function (event) {
+		event.preventDefault();
+
+		Meteor.loginWithPassword($("#loginName").val(), $("#loginPassword").val(), function (Error) {
+			if (Error) {
+                console.log(Error.error + ": " + Error.reason + ". " + Error.description);
+                alert(Error.reason);
+            } else {
+                Backbone.history.navigate("/");
+            }
+		});
+	}
+});
 
 Template.home.items = function () {
 	return Items.find({
@@ -81,6 +97,10 @@ var getFacebookPicture = function (facebookId) {
 
 Template.layout.userPicture = function () {
 	return  (Meteor.user().services) ? getFacebookPicture(Meteor.user().services.facebook.id) : '';
+};
+
+Template.layout.currentRegistration = function () {
+	return Session.get("currentRegistration");
 };
 
 Template.layout.currentGroup = function () {

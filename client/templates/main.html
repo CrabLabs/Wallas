@@ -18,11 +18,15 @@
 		<a href="/">Index</a>
 	</header>
 	<div id="main" role="main">
-		{{#if currentGroup }}
-			{{> home }}
+		{{#if currentRegistration }}
+			<p>registration</p>
 		{{ else }}
-			{{> dashboard }}
-		{{/if }}
+			{{#if currentGroup }}
+				{{> home }}
+			{{ else }}
+				{{> dashboard }}
+			{{/if }}
+		{{/if}}
 	</div>
 	<footer>
 		<button id="add-new">+</button>
