@@ -33,6 +33,34 @@ Template.login.events({
 	}
 });
 
+Template.register.events({
+	"submit form": function (event) {
+		event.preventDefault();
+		var username, email, pass, passConfirm;
+
+		email = $("#registerEmail").val()
+		pass = $("#registerPassword").val();
+		username = $("#registerUsername").val();
+		passConfirm = $("#registerPasswordConfirmation").val();
+		
+		if (pass == passConfirm) {
+			Accounts.createUser({
+				username: username,
+				email: email,
+				password: pass
+			}, function (Error) {
+				if (Error) {
+					console.log(Error);
+				} else {
+					document.reload();
+				}
+			});
+		} else {
+			alert("The passwords doesn't match!");
+		}
+	}
+});
+
 Template.home.items = function () {
 	return Items.find({
 		group: Session.get("currentGroup")

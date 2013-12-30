@@ -47,3 +47,7 @@ Groups.allow({
 		return Meteor.user()._id === userId;
 	}
 });
+
+Accounts.config({
+	sendVerificationEmail: false
+});

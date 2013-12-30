@@ -1,16 +1,6 @@
 <template name="login">
 	{{#if registerPage }}
-		<div id="register">
-			<div class="logo"></div>
-			<form action="">
-				<fieldset>
-					<input type="text" name="registerEmail" id="registerName" placeholder="Email">
-					<input type="password" name="registerPassword" id="registerPassword" placeholder="Password">
-					<input type="password" name="registerPasswordConfirmation" id="registerPasswordConfirmation" placeholder="Password confirmation">
-					<input type="submit" value="Sign in" id="send">
-				</fieldset>
-			</form>
-		</div>
+		{{> register }}
 	{{ else }}
 		<div id="login">
 			<div class="logo"></div>
