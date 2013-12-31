@@ -1,4 +1,4 @@
-(function ($) {
+/*(function ($) {
 	'use strict';
 
 	$.fn.dialog = function (option) {
@@ -12,4 +12,4 @@
         html: '<input />',
     };
 
-}(jQuery));
+}(jQuery));*/
