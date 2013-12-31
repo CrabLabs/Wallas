@@ -25,7 +25,7 @@ Template.layout.events({
 		var dialog = $("<form />").addClass("dialog");
 		dialog.append("<input class='name' placeholder='Item name' autofocus>");
 		dialog.append("<input class='price' placeholder='Item price'>");
-		dialog.append("<input type='submit'>");
+		dialog.append("<input type='submit' id='send'>");
 		$(dialog).appendTo("footer .interaction");
 
 		$(document).on("submit", ".dialog", function (event) {

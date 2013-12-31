@@ -56,10 +56,31 @@ header{
 		border-bottom: 1px solid #e5e5e5;
 		padding-bottom: 20px;
 	}
-	.groupAdd{
-		background: #3d5159;
-		border-radius: 8px;
-		color: #fff;
-		padding: 5px 10px;
+	.interaction{
+		.groupAdd{
+			background: #3d5159;
+			border-radius: 8px;
+			color: #fff;
+			padding: 5px 10px;
+		}
+		input{
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			display: inline-block;
+			font-style: italic;
+			margin: 10px 10px 10px 0;
+			outline: none;
+			padding: 10px 8px;
+			width: 250px;
+			&#send{
+				background: #3d5159;
+				color: #fff;
+				font-style: normal;
+				width: auto;
+				&:hover{
+					cursor: pointer;
+				}
+			}
+		}
 	}
 }

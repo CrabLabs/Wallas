@@ -9,7 +9,7 @@ Template.dashboard.events({
 		event.preventDefault();
 		
 		var dialog = $("<form />").addClass("dialog");
-		dialog.append("<input placeholder='Group name' autofocus>").append("<input type='submit'>");
+		dialog.append("<input placeholder='Group name' autofocus>").append("<input type='submit' id='send'>");
 		$(dialog).appendTo("#dashboard .interaction");
 
 		$(document).on("submit", ".dialog", function (event) {
