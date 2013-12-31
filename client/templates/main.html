@@ -17,6 +17,9 @@
 		<a href="#" id="logout" class="button">Logout</a>
 		<a href="/" id="back" class="button">Index</a>
 	</header>
+	{{#if noProfilePic }}
+		<span class='warning noProfilePic'>You haven't set a profile pic yet! <a href='#'>Click here</a> to add one!</span> 
+	{{/if }}
 	<div id="main" role="main">
 		{{#if currentGroup }}
 			{{> home }}

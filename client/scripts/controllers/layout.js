@@ -1,6 +1,5 @@
-Template.layout.userPicture = function () {
-	return '';
-	//return  (Meteor.user().services) ? getFacebookPicture(Meteor.user().services.facebook.id) : '';
+Template.layout.noProfilePic = function () {
+	return (typeof Meteor.user().profile.image === undefined) ? false : true;
 };
 
 Template.layout.currentGroup = function () {
@@ -8,12 +7,18 @@ Template.layout.currentGroup = function () {
 };
 
 Template.layout.events({
-	"dblclick .profilePic": function () {
-		Meteor.users.update({_id: Meteor.userId()}, {
-			$set: {
-				"profile.image": prompt("Picture URL")
-			}
-		});
+	"click .noProfilePic a": function (event) {
+		event.preventDefault();
+
+		var url = prompt("Enter the image URL (link)");
+
+		if ($.trim(url) !== "") {
+			Meteor.users.update({_id: Meteor.userId()}, {
+				$set: {
+					"profile.image": $.trim(url)
+				}
+			});
+		}
 	},
 	"click #logout": function (event) {
 		event.preventDefault();
