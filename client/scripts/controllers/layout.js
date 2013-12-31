@@ -39,7 +39,7 @@ Template.layout.events({
 			var price = $(this).children("input.price").val();
 			if ($.trim(name) !== "" && $.trim(price) !== "") {
 				Items.insert({
-					user: Meteor.user(),
+					user: Meteor.userId(),
 					group: Session.get("currentGroup"),
 					name: name,
 					price: parseInt(price, 10)
