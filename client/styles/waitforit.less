@@ -1,0 +1,50 @@
+#loggingIn{
+	height: 220px;
+	left: 50%;
+	margin-left: -100px;
+	margin-top: -110px;
+	position: absolute;
+	top: 50%;
+	width: 200px;
+	div{
+		display: block;
+		&#logoCont{
+			position: relative;
+			div{
+				background-repeat: no-repeat;
+				height: 150px;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 150px;
+				&#rotate{
+					-webkit-animation: giro 3s linear infinite;
+					   -moz-animation: giro 3s linear infinite;
+					     -o-animation: giro 3s linear infinite;
+							animation: giro 3s linear infinite;
+					background-image: url(/images/wait_2.png);
+					background-image: url(/images/wait_2.svg);
+				}
+				&#fixed{
+					-webkit-animation: pulso 2s infinite;
+					   -moz-animation: pulso 2s infinite;
+					     -o-animation: pulso 2s infinite;
+							animation: pulso 2s infinite;
+					background-image: url(/images/wait_1.png);
+					background-image: url(/images/wait_1.svg);
+				}
+			}
+		}
+		&#logoName{
+			background-image: url(/images/logo.png);
+			background-image: url(/images/logo.svg);
+			background-position: bottom;
+			background-repeat: no-repeat;
+			background-size: 150px;
+			height: 50px;
+			position: absolute;
+			top: 170px;
+			width: 150px;
+		}
+	}
+}

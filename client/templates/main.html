@@ -5,7 +5,13 @@
 </head>
 <body>
 	{{#if loggingIn }}
-		<div id="loggingIn">hola</div>
+		<div id="loggingIn">
+			<div id="logoCont">
+				<div id="fixed"></div>
+				<div id="rotate"></div>
+			</div>
+			<div id="logoName"></div>
+		</div>
 	{{ else }}
 		{{#if currentUser }}
 			{{> layout }}
