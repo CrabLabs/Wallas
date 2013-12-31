@@ -23,7 +23,7 @@ Template.dashboard.events({
 					name: name
 				});
 
-				$(".dialog").remove();	
+				$(".dialog").remove();
 			}
 		});
 	},

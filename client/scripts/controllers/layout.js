@@ -15,11 +15,26 @@ Template.layout.events({
 	"click #add-new": function (event) {
 		event.preventDefault();
 
-		Items.insert({
-			user: Meteor.user(),
-			group: Session.get("currentGroup"),
-			name: prompt("Item name"),
-			price: parseInt(prompt("Item price"), 10)
+		var dialog = $("<form />").addClass("dialog");
+		dialog.append("<input class='name' placeholder='Item name' autofocus>");
+		dialog.append("<input class='price' placeholder='Item price'>");
+		dialog.append("<input type='submit'>");
+		$(dialog).appendTo("footer .interaction");
+
+		$(document).on("submit", ".dialog", function (event) {
+			event.preventDefault();
+			var name = $(this).children("input.name").val();
+			var price = $(this).children("input.price").val();
+			if ($.trim(name) !== "" && $.trim(price) !== "") {
+				Items.insert({
+					user: Meteor.user(),
+					group: Session.get("currentGroup"),
+					name: name,
+					price: parseInt(price, 10)
+				});
+
+				$(".dialog").remove();
+			}
 		});
 	}
 });
