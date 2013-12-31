@@ -1,10 +1,14 @@
 <template name="home">
 	<div id="home">
+		{{#if noItems }}
+			<span class='warning'>There are no items in this group yet!<br><strong>Go ahead and add the first one!</strong></span>
+		{{ else }}
 		<ul class="items">
-			{{#each items}}
-				{{> item}}
-			{{/each}}
+			{{#each items }}
+				{{> item }}
+			{{/each }}
 		</ul>
 		<div class="total">Total: {{ total }}</div>
+		{{/if }}
 	</div>
 </template>

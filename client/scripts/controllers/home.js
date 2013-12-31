@@ -1,3 +1,7 @@
+Template.home.noItems = function () {
+	return Items.find({ group: Session.get("currentGroup") }).count() === 0;
+};
+
 Template.home.items = function () {
 	return Items.find({
 		group: Session.get("currentGroup")
