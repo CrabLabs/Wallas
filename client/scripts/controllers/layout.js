@@ -8,6 +8,13 @@ Template.layout.currentGroup = function () {
 };
 
 Template.layout.events({
+	"dblclick .profilePic": function () {
+		Meteor.users.update({_id: Meteor.userId()}, {
+			$set: {
+				"profile.image": prompt("Picture URL")
+			}
+		});
+	},
 	"click #logout": function (event) {
 		event.preventDefault();
 		Meteor.logout();
