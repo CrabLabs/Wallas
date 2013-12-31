@@ -24,6 +24,7 @@ Template.dashboard.events({
 				});
 
 				$(".dialog").remove();
+				$(document).off("submit", ".dialog");
 			}
 		});
 	},

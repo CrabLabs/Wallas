@@ -46,6 +46,7 @@ Template.layout.events({
 				});
 
 				$(".dialog").remove();
+				$(document).off("submit", ".dialog");
 			}
 		});
 	}
