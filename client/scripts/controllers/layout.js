@@ -1,5 +1,5 @@
 Template.layout.noProfilePic = function () {
-	return (typeof Meteor.user().profile.image === "undefined") ? true : false;
+	return Meteor.user() && Meteor.user().profile && ((typeof Meteor.user().profile.image === "undefined") ? true : false);
 };
 
 Template.layout.currentGroup = function () {
